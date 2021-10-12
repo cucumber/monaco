@@ -4,13 +4,12 @@ import {
   getGherkinDiagnostics,
   getGherkinFormattingEdits,
   getGherkinSemanticTokens,
-  semanticTokenModifiers,
   semanticTokenTypes,
 } from '@cucumber/language-service'
 import { Index } from '@cucumber/suggest'
-import { Range, TextEdit } from 'vscode-languageserver-types'
 import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api'
 import { editor, IRange } from 'monaco-editor/esm/vs/editor/editor.api'
+import { Range, TextEdit } from 'vscode-languageserver-types'
 
 type Monaco = typeof monacoEditor
 
@@ -29,7 +28,7 @@ export function configureMonaco(
     getLegend: function () {
       return {
         tokenTypes: semanticTokenTypes,
-        tokenModifiers: semanticTokenModifiers,
+        tokenModifiers: [],
       }
     },
     releaseDocumentSemanticTokens: function () {
@@ -79,20 +78,22 @@ export function configureMonaco(
     },
   })
 
-  return function(editor) {
+  return function (editor) {
     // Diagnostics (Syntax validation)
     function setDiagnosticMarkers() {
       const model = editor.getModel()
-      const gherkinSource = model.getValue()
-      const diagnostics = getGherkinDiagnostics(gherkinSource, expressions)
-      const markers: monacoEditor.editor.IMarkerData[] = diagnostics.map((diagnostic) => {
-        return {
-          ...(convertRange(diagnostic.range)),
-          severity: monaco.MarkerSeverity.Error,
-          message: diagnostic.message,
-        }
-      })
-      monaco.editor.setModelMarkers(model, 'gherkin', markers)
+      if (model) {
+        const gherkinSource = model.getValue()
+        const diagnostics = getGherkinDiagnostics(gherkinSource, expressions)
+        const markers: monacoEditor.editor.IMarkerData[] = diagnostics.map((diagnostic) => {
+          return {
+            ...convertRange(diagnostic.range),
+            severity: monaco.MarkerSeverity.Error,
+            message: diagnostic.message,
+          }
+        })
+        monaco.editor.setModelMarkers(model, 'gherkin', markers)
+      }
     }
 
     function requestValidation() {

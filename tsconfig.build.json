@@ -1,12 +1,16 @@
 {
-  "extends": "../../tsconfig.build.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "rootDir": ".",
-    "outDir": "dist"
+    "noEmit": false
   },
   "include": [
-    "package.json",
     "src",
-    "test"
-  ]
+    "test",
+    "try"
+  ],
 }

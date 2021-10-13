@@ -4,9 +4,9 @@ import {
   getGherkinDiagnostics,
   getGherkinFormattingEdits,
   getGherkinSemanticTokens,
+  Index,
   semanticTokenTypes,
 } from '@cucumber/language-service'
-import { Index } from '@cucumber/suggest'
 import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api'
 import { editor, IRange } from 'monaco-editor/esm/vs/editor/editor.api'
 import { Range, TextEdit } from 'vscode-languageserver-types'

@@ -1,8 +1,8 @@
 import { ExpressionFactory, ParameterTypeRegistry } from '@cucumber/cucumber-expressions'
-import { buildStepDocuments, jsSearchIndex } from '@cucumber/suggest'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
 import { configureMonaco } from '../src/index.js'
+import { buildStepDocuments, jsSearchIndex } from '@cucumber/language-service'
 
 console.log('Booting')
 

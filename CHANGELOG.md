@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Add a `<MonacoEditor>` React component
+
 ## [0.4.0] - 2021-10-13
 ### Changed
 - Upgrade to `@cucumber/language-service 0.5.0`

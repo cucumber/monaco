@@ -1,8 +1,10 @@
 import { ExpressionFactory, ParameterTypeRegistry } from '@cucumber/cucumber-expressions'
 import { buildStepDocuments, jsSearchIndex } from '@cucumber/language-service'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import React from 'react'
+import { render } from 'react-dom'
 
-import { configureMonaco } from '../src/index.js'
+import { configureMonaco, MonacoEditor } from '../src/index.js'
 
 console.log('Booting')
 
@@ -18,6 +20,7 @@ const docs = buildStepDocuments(
   expressions
 )
 const index = jsSearchIndex(docs)
+const configureEditor = configureMonaco(monaco, index, expressions)
 
 const value = `@foo
 Feature: Hello
@@ -28,27 +31,19 @@ Scenario: Hi
     | formatted | table |
 `
 
-// @ts-ignore
-const editor1 = monaco.editor.create(document.getElementById('editor1'), {
+const options = {
   value,
   language: 'gherkin',
   theme: 'vs-dark',
   // semantic tokens provider is disabled by default
   'semanticHighlighting.enabled': true,
-})
+}
 
 // @ts-ignore
-const editor2 = monaco.editor.create(document.getElementById('editor2'), {
-  value,
-  language: 'gherkin',
-  theme: 'vs-dark',
-  // semantic tokens provider is disabled by default
-  'semanticHighlighting.enabled': true,
-})
-
-const configureEditor = configureMonaco(monaco, index, expressions)
-
+const editor1 = monaco.editor.create(document.getElementById('editor1'), options)
 configureEditor(editor1)
-configureEditor(editor2)
 
-console.log('Booted')
+render(
+  <MonacoEditor options={options} className="editor" configure={configureEditor} />,
+  document.getElementById('editor2')
+)

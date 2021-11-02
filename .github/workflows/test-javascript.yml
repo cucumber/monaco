@@ -34,4 +34,7 @@ jobs:
         cache-dependency-path: package-lock.json
     - run: npm install-test
     - run: npm run webpack
+      env:
+        # https://github.com/webpack/webpack/issues/14532
+        NODE_OPTIONS: "${{ startsWith('17', matrix.node-version) && '--openssl-legacy-provider' || '' }}"
     - run: npm run eslint

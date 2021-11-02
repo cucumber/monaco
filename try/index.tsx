@@ -1,7 +1,7 @@
 import { ExpressionFactory, ParameterTypeRegistry } from '@cucumber/cucumber-expressions'
 import { buildStepDocuments, jsSearchIndex } from '@cucumber/language-service'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import React, { useCallback, useLayoutEffect, useState } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 
 import { configureMonaco, MonacoEditor } from '../src/index.js'

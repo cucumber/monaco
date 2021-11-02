@@ -1,23 +1,45 @@
-import { ExpressionFactory, ParameterTypeRegistry } from '@cucumber/cucumber-expressions'
-import { buildStepDocuments, jsSearchIndex } from '@cucumber/language-service'
+import {
+  buildStepDocuments,
+  ExpressionBuilder,
+  jsSearchIndex,
+  WasmUrls,
+} from '@cucumber/language-service'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
-import { configureMonaco } from '../src/index.js'
+import { ConfigureEditor, configureMonaco } from '../src/index.js'
 
-console.log('Booting')
+async function makeConfigureEditor(): Promise<ConfigureEditor> {
+  const expressionBuilder = new ExpressionBuilder()
 
-// Build some sample step texts and cucumber expressions. These would typically come from a stream
-// of Cucumber Messages.
-const ef = new ExpressionFactory(new ParameterTypeRegistry())
-const expressions = [
-  ef.createExpression('I have {int} cukes in my belly'),
-  ef.createExpression('there are {int} blind mice'),
-]
-const docs = buildStepDocuments(
-  ['I have 42 cukes in my belly', 'I have 96 cukes in my belly', 'there are 38 blind mice'],
-  expressions
-)
-const index = jsSearchIndex(docs)
+  const wasmUrls: WasmUrls = {
+    java: 'tree-sitter-java.wasm',
+    typescript: 'tree-sitter-typescript.wasm',
+  }
+
+  await expressionBuilder.init(wasmUrls)
+
+  const expressions = expressionBuilder.build('java', [
+    `
+class StepDefinitions {
+    @Given("I have {int} cukes in my belly"  )
+    void method1() {
+    }
+
+    @Given("there are {int} blind mice")
+    void method2() {
+    }
+}
+`,
+  ])
+
+  const docs = buildStepDocuments(
+    ['I have 42 cukes in my belly', 'I have 96 cukes in my belly', 'there are 38 blind mice'],
+    expressions
+  )
+  const index = jsSearchIndex(docs)
+
+  return configureMonaco(monaco, index, expressions)
+}
 
 const value = `@foo
 Feature: Hello
@@ -46,9 +68,10 @@ const editor2 = monaco.editor.create(document.getElementById('editor2'), {
   'semanticHighlighting.enabled': true,
 })
 
-const configureEditor = configureMonaco(monaco, index, expressions)
-
-configureEditor(editor1)
-configureEditor(editor2)
-
-console.log('Booted')
+makeConfigureEditor()
+  .then((configureEditor) => {
+    configureEditor(editor1)
+    configureEditor(editor2)
+    console.log('Booted')
+  })
+  .catch((err) => console.error(err.stack))

@@ -4,7 +4,7 @@ import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React, { useCallback, useLayoutEffect, useState } from 'react'
 import { render } from 'react-dom'
 
-import { configureMonaco } from '../src/index.js'
+import { configureMonaco, MonacoEditor } from '../src/index.js'
 
 console.log('Booting')
 
@@ -43,32 +43,7 @@ const options = {
 const editor1 = monaco.editor.create(document.getElementById('editor1'), options)
 configureEditor(editor1)
 
-const MonacoEditor: React.FC<{
-  options: monaco.editor.IStandaloneEditorConstructionOptions
-  className: string
-}> = ({ options, className }) => {
-  const [div, setDiv] = useState<HTMLDivElement | null>(null)
-  const divCallback = useCallback((node: HTMLDivElement | null) => {
-    setDiv(node)
-  }, [])
-
-  useLayoutEffect(() => {
-    let editor: monaco.editor.IStandaloneCodeEditor
-    if (div) {
-      const domElement = document.createElement('div')
-      domElement.classList.add(className)
-      div.appendChild(domElement)
-      editor = monaco.editor.create(domElement, options)
-      configureEditor(editor)
-    }
-
-    return () => {
-      editor?.dispose()
-      div?.firstElementChild && div?.removeChild(div.firstElementChild)
-    }
-  }, [className, div, divCallback, options])
-
-  return <div ref={divCallback} />
-}
-
-render(<MonacoEditor options={options} className="editor" />, document.getElementById('editor2'))
+render(
+  <MonacoEditor options={options} className="editor" configure={configureEditor} />,
+  document.getElementById('editor2')
+)

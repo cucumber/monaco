@@ -5,8 +5,10 @@ import {
   WasmUrls,
 } from '@cucumber/language-service'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import React from 'react'
+import { render } from 'react-dom'
 
-import { ConfigureEditor, configureMonaco } from '../src/index.js'
+import { ConfigureEditor, configureMonaco, MonacoEditor } from '../src/index.js'
 
 async function makeConfigureEditor(): Promise<ConfigureEditor> {
   const expressionBuilder = new ExpressionBuilder()
@@ -50,28 +52,21 @@ Scenario: Hi
     | formatted | table |
 `
 
-// @ts-ignore
-const editor1 = monaco.editor.create(document.getElementById('editor1'), {
+const options = {
   value,
   language: 'gherkin',
   theme: 'vs-dark',
   // semantic tokens provider is disabled by default
   'semanticHighlighting.enabled': true,
-})
-
-// @ts-ignore
-const editor2 = monaco.editor.create(document.getElementById('editor2'), {
-  value,
-  language: 'gherkin',
-  theme: 'vs-dark',
-  // semantic tokens provider is disabled by default
-  'semanticHighlighting.enabled': true,
-})
+}
 
 makeConfigureEditor()
   .then((configureEditor) => {
-    configureEditor(editor1)
-    configureEditor(editor2)
-    console.log('Booted')
+    // @ts-ignore
+    configureEditor(monaco.editor.create(document.getElementById('editor1'), options))
+    render(
+      <MonacoEditor options={options} className="editor" configure={configureEditor} />,
+      document.getElementById('editor2')
+    )
   })
   .catch((err) => console.error(err.stack))

@@ -5,7 +5,12 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry: './dist/cjs/try/index.js',
   resolve: {
-    extensions: ['.js']
+    extensions: ['.js'],
+    // web-tree-sitter depends on those, but we can safely ignore them
+    fallback: {
+      "path": false,
+      "fs": false
+    }
   },
   output: {
     globalObject: 'self',

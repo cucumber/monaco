@@ -1,12 +1,10 @@
 import * as monaco from 'monaco-editor'
 import React, { useCallback, useLayoutEffect, useState } from 'react'
 
-import { ConfigureEditor } from './configureMonaco'
-
 export const MonacoEditor: React.FC<{
   options: monaco.editor.IStandaloneEditorConstructionOptions
   className: string
-  configure: ConfigureEditor
+  configure: (editor: monaco.editor.IStandaloneCodeEditor) => void
 }> = ({ options, className, configure }) => {
   const [div, setDiv] = useState<HTMLDivElement | null>(null)
   const divCallback = useCallback((node: HTMLDivElement | null) => {

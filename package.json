@@ -85,7 +85,6 @@
     "vscode-languageserver-types": "3.16.0"
   },
   "peerDependencies": {
-    "monaco-editor": "^0.29.1",
-    "react": "^17.0.0"
+    "monaco-editor": "^0.29.1"
   }
 }

@@ -8,7 +8,8 @@ import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React from 'react'
 import { render } from 'react-dom'
 
-import { ConfigureEditor, configureMonaco, MonacoEditor } from '../src/index.js'
+import { ConfigureEditor, configureMonaco } from '../src/index.js'
+import { MonacoEditor } from './MonacoEditor.js'
 
 async function makeConfigureEditor(): Promise<ConfigureEditor> {
   const expressionBuilder = new ExpressionBuilder()

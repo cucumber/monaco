@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.1] - 2021-11-04
+### Fixed
+- Fixed compilation error in demo code
+
 ## [0.6.0] - 2021-11-04
 ### Changed
 - Upgrade to `@cucumber/language-service 0.9.0`
@@ -56,7 +60,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/monaco/compare/0.6.0...HEAD
+[Unreleased]: https://github.com/cucumber/monaco/compare/0.6.1...HEAD
+[0.6.1]: https://github.com/cucumber/monaco/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/cucumber/monaco/compare/0.5.1...0.6.0
 [0.5.1]: https://github.com/cucumber/monaco/compare/v0.5.0...0.5.1
 [0.5.0]: https://github.com/cucumber/monaco/compare/v0.4.0...0.5.0

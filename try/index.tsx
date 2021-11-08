@@ -1,9 +1,11 @@
 import {
   buildStepDocuments,
-  ExpressionBuilder,
   jsSearchIndex,
-  WasmUrls,
 } from '@cucumber/language-service'
+import {
+  ExpressionBuilder,
+  WasmUrls,
+} from '@cucumber/language-server'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React from 'react'
 import { render } from 'react-dom'

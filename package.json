@@ -27,7 +27,7 @@
     "eslint-fix": "eslint --ext ts,tsx --max-warnings 0 --fix src test try",
     "eslint": "eslint --ext ts,tsx --max-warnings 0 src test try",
     "upgrade": "npm-check-updates --upgrade",
-    "webpack": "npm run build:cjs && webpack && cp node_modules/web-tree-sitter/tree-sitter.wasm node_modules/@cucumber/language-service/*.wasm docs && git clean -dfx docs"
+    "webpack": "npm run build:cjs && webpack && cp node_modules/web-tree-sitter/tree-sitter.wasm node_modules/@cucumber/language-server/*.wasm docs && git clean -dfx docs"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.1",
     "@cucumber/cucumber-expressions": "^14.0.0",
+    "@cucumber/language-server": "^0.3.1",
     "@types/mocha": "9.0.0",
     "@types/node": "16.11.6",
     "@types/react": "17.0.34",
@@ -81,7 +82,7 @@
     "webpack-cli": "4.9.1"
   },
   "dependencies": {
-    "@cucumber/language-service": "^0.9.0",
+    "@cucumber/language-service": "^0.10.0",
     "vscode-languageserver-types": "3.16.0"
   },
   "peerDependencies": {

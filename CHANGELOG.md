@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.8.0] - 2021-11-08
 ### Changed
 - Use @cucumber/language-service 0.10.1
 - Use monaco-editor 0.30.0
@@ -69,7 +70,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/monaco/compare/0.7.0...HEAD
+[Unreleased]: https://github.com/cucumber/monaco/compare/0.8.0...HEAD
+[0.8.0]: https://github.com/cucumber/monaco/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/cucumber/monaco/compare/0.6.1...0.7.0
 [0.6.1]: https://github.com/cucumber/monaco/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/cucumber/monaco/compare/0.5.1...0.6.0

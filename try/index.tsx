@@ -52,7 +52,7 @@ Scenario: Hi
 const options = {
   value,
   language: 'gherkin',
-  theme: 'vs',
+  theme: 'vs-dark',
   // semantic tokens provider is disabled by default
   'semanticHighlighting.enabled': true,
 }

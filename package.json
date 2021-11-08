@@ -27,7 +27,7 @@
     "eslint-fix": "eslint --ext ts,tsx --max-warnings 0 --fix src test try",
     "eslint": "eslint --ext ts,tsx --max-warnings 0 src test try",
     "upgrade": "npm-check-updates --upgrade",
-    "webpack": "npm run build:cjs && webpack && cp node_modules/web-tree-sitter/tree-sitter.wasm node_modules/@cucumber/language-server/*.wasm docs && git clean -dfx docs"
+    "webpack": "npm run build:cjs && rm -f docs/*.js && webpack && cp node_modules/web-tree-sitter/tree-sitter.wasm node_modules/@cucumber/language-server/*.wasm docs"
   },
   "repository": {
     "type": "git",

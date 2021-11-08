@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Use @cucumber/language-service 0.10.1
+- Use monaco-editor 0.30.0
+
 ## [0.7.0] - 2021-11-08
 ### Changed
 - Use @cucumber/language-service 0.10.0

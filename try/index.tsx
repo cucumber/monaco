@@ -1,11 +1,5 @@
-import {
-  buildStepDocuments,
-  jsSearchIndex,
-} from '@cucumber/language-service'
-import {
-  ExpressionBuilder,
-  WasmUrls,
-} from '@cucumber/language-server'
+import { ExpressionBuilder, WasmUrls } from '@cucumber/language-server'
+import { buildStepDocuments, jsSearchIndex } from '@cucumber/language-service'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React from 'react'
 import { render } from 'react-dom'
@@ -58,7 +52,7 @@ Scenario: Hi
 const options = {
   value,
   language: 'gherkin',
-  theme: 'vs-dark',
+  theme: 'vs',
   // semantic tokens provider is disabled by default
   'semanticHighlighting.enabled': true,
 }

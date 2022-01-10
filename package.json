@@ -82,7 +82,7 @@
     "webpack-cli": "4.9.1"
   },
   "dependencies": {
-    "@cucumber/language-service": "^0.10.1",
+    "@cucumber/language-service": "^0.11.0",
     "vscode-languageserver-types": "3.16.0"
   },
   "peerDependencies": {

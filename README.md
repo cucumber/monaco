@@ -1,3 +1,5 @@
+[![test-javascript](https://github.com/cucumber/monaco/actions/workflows/test-javascript.yml/badge.svg)](https://github.com/cucumber/monaco/actions/workflows/test-javascript.yml)
+
 # Cucumber Monaco
 
 This library configures a [monaco editor](https://github.com/microsoft/monaco-editor) to use [@cucumber/language-service](https://github.com/cucumber/language-service#readme)

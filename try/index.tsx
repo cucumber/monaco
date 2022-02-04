@@ -1,5 +1,10 @@
-import { ExpressionBuilder, WasmUrls } from '@cucumber/language-server'
-import { buildStepDocuments, jsSearchIndex } from '@cucumber/language-service'
+import {
+  buildStepDocuments,
+  ExpressionBuilder,
+  jsSearchIndex,
+  Source,
+  WasmUrls,
+} from '@cucumber/language-service'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React from 'react'
 import { render } from 'react-dom'
@@ -17,9 +22,10 @@ async function makeConfigureEditor(): Promise<ConfigureEditor> {
 
   await expressionBuilder.init(wasmUrls)
 
-  const expressions = expressionBuilder.build('java', [
-    `
-class StepDefinitions {
+  const sources: Source[] = [
+    {
+      language: 'java',
+      content: `class StepDefinitions {
     @Given("I have {int} cukes in my belly"  )
     void method1() {
     }
@@ -29,7 +35,10 @@ class StepDefinitions {
     }
 }
 `,
-  ])
+    },
+  ]
+
+  const expressions = expressionBuilder.build(sources, [])
 
   const docs = buildStepDocuments(
     ['I have 42 cukes in my belly', 'I have 96 cukes in my belly', 'there are 38 blind mice'],

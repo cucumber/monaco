@@ -12,7 +12,7 @@ The library can be used with vanilla DOM as well as React. See [try/index.tsx](t
 
 ## Local demo
 
-Build everything and serve the contents of `docs` 
+Build everything and serve the contents of `docs`:
 
     npm install
     npm run webpack

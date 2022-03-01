@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "@cucumber/language-service": "^0.12.1",
-    "vscode-languageserver-types": "3.17.0-next.7"
+    "vscode-languageserver-types": "3.17.0-next.8"
   },
   "peerDependencies": {
     "monaco-editor": "^0.32.0"

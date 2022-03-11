@@ -65,7 +65,7 @@
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.5.0",
     "http-server": "^14.1.0",
-    "mocha": "9.2.1",
+    "mocha": "9.2.2",
     "monaco-editor": "0.33.0",
     "monaco-editor-webpack-plugin": "7.0.1",
     "npm-check-updates": "12.5.2",

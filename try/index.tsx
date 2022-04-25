@@ -1,10 +1,11 @@
+import { ParameterTypeRegistry } from '@cucumber/cucumber-expressions'
 import {
-  buildStepDocuments,
+  buildSuggestions,
   ExpressionBuilder,
   jsSearchIndex,
   Source,
-  WasmUrls,
 } from '@cucumber/language-service'
+import { WasmParserAdapter } from '@cucumber/language-service/wasm'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React from 'react'
 import { render } from 'react-dom'
@@ -13,14 +14,11 @@ import { ConfigureEditor, configureMonaco } from '../src/index.js'
 import { MonacoEditor } from './MonacoEditor.js'
 
 async function makeConfigureEditor(): Promise<ConfigureEditor> {
-  const expressionBuilder = new ExpressionBuilder()
+  monaco.languages.register({ id: 'typescript' })
 
-  const wasmUrls: WasmUrls = {
-    java: 'tree-sitter-java.wasm',
-    typescript: 'tree-sitter-typescript.wasm',
-  }
-
-  await expressionBuilder.init(wasmUrls)
+  const adapter = new WasmParserAdapter()
+  await adapter.init('')
+  const expressionBuilder = new ExpressionBuilder(adapter)
 
   const sources: Source[] = [
     {
@@ -33,6 +31,10 @@ async function makeConfigureEditor(): Promise<ConfigureEditor> {
     @Given("there are {int} blind mice")
     void method2() {
     }
+
+    @Given("there is/are some/none/1 apple(s)")
+    void method2() {
+    }
 }
 `,
     },
@@ -40,12 +42,13 @@ async function makeConfigureEditor(): Promise<ConfigureEditor> {
 
   const expressions = expressionBuilder.build(sources, [])
 
-  const docs = buildStepDocuments(
+  const registry = new ParameterTypeRegistry()
+  const docs = buildSuggestions(
+    registry,
     ['I have 42 cukes in my belly', 'I have 96 cukes in my belly', 'there are 38 blind mice'],
     expressions
   )
   const index = jsSearchIndex(docs)
-
   return configureMonaco(monaco, index, expressions)
 }
 

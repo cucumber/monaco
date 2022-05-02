@@ -16,8 +16,8 @@ import { MonacoEditor } from './MonacoEditor.js'
 async function makeConfigureEditor(): Promise<ConfigureEditor> {
   monaco.languages.register({ id: 'typescript' })
 
-  const adapter = new WasmParserAdapter()
-  await adapter.init('.')
+  const adapter = new WasmParserAdapter('.')
+  await adapter.init()
   const expressionBuilder = new ExpressionBuilder(adapter)
 
   const sources: Source[] = [

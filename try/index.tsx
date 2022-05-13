@@ -3,6 +3,7 @@ import {
   buildSuggestions,
   ExpressionBuilder,
   jsSearchIndex,
+  LanguageName,
   Source,
 } from '@cucumber/language-service'
 import { WasmParserAdapter } from '@cucumber/language-service/wasm'
@@ -20,9 +21,10 @@ async function makeConfigureEditor(): Promise<ConfigureEditor> {
   await adapter.init()
   const expressionBuilder = new ExpressionBuilder(adapter)
 
-  const sources: Source[] = [
+  const sources: Source<LanguageName>[] = [
     {
       language: 'java',
+      path: 'StepDefinitions.java',
       content: `class StepDefinitions {
     @Given("I have {int} cukes in my belly"  )
     void method1() {
@@ -40,7 +42,7 @@ async function makeConfigureEditor(): Promise<ConfigureEditor> {
     },
   ]
 
-  const expressions = expressionBuilder.build(sources, [])
+  const { expressions } = expressionBuilder.build(sources, [])
 
   const registry = new ParameterTypeRegistry()
   const docs = buildSuggestions(

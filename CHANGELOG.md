@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Use @cucumber/language-service 0.20.4
+
 ### Fixed
 - LSP snippets are correctly escaped
 - Autocomplete from Cucumber Expressions always yields values

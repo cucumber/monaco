@@ -8,8 +8,8 @@ import {
   semanticTokenTypes,
 } from '@cucumber/language-service'
 import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api'
-import { editor, IRange } from 'monaco-editor/esm/vs/editor/editor.api'
-import { Range, TextEdit } from 'vscode-languageserver-types'
+import { editor, IPosition, IRange } from 'monaco-editor/esm/vs/editor/editor.api'
+import { Position, Range, TextEdit } from 'vscode-languageserver-types'
 
 type Monaco = typeof monacoEditor
 
@@ -49,18 +49,14 @@ export function configureMonaco(
   monaco.languages.registerCompletionItemProvider('gherkin', {
     provideCompletionItems: function (model, position) {
       const gherkinSource = model.getValue()
-      const completionItems = getGherkinCompletionItems(
-        gherkinSource,
-        position.lineNumber - 1,
-        index
-      )
+      const completionItems = getGherkinCompletionItems(gherkinSource, toPosition(position), index)
       return {
         suggestions: completionItems.map((completionItem) => ({
           label: completionItem.label,
           kind: monaco.languages.CompletionItemKind.Text,
           insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
           insertText: (completionItem.textEdit as TextEdit).newText,
-          range: convertRange((completionItem.textEdit as TextEdit).range),
+          range: toIRange((completionItem.textEdit as TextEdit).range),
         })),
       }
     },
@@ -72,7 +68,7 @@ export function configureMonaco(
       const gherkinSource = model.getValue()
       const textEdits = getGherkinFormattingEdits(gherkinSource)
       return textEdits.map((textEdit) => ({
-        range: convertRange(textEdit.range),
+        range: toIRange(textEdit.range),
         text: textEdit.newText,
       }))
     },
@@ -87,7 +83,7 @@ export function configureMonaco(
         const diagnostics = getGherkinDiagnostics(gherkinSource, expressions)
         const markers: monacoEditor.editor.IMarkerData[] = diagnostics.map((diagnostic) => {
           return {
-            ...convertRange(diagnostic.range),
+            ...toIRange(diagnostic.range),
             severity: monaco.MarkerSeverity.Error,
             message: diagnostic.message,
           }
@@ -112,11 +108,25 @@ export function configureMonaco(
   }
 }
 
-function convertRange(range: Range): IRange {
+function toIRange(range: Range): IRange {
   return {
     startLineNumber: range.start.line + 1,
     startColumn: range.start.character + 1,
     endLineNumber: range.end.line + 1,
     endColumn: range.end.character + 1,
+  }
+}
+
+// function toIPosition(position: Position): IPosition {
+//   return {
+//     lineNumber: position.line + 1,
+//     column: position.character + 1,
+//   }
+// }
+
+function toPosition(position: IPosition): Position {
+  return {
+    line: position.lineNumber - 1,
+    character: position.column - 1,
   }
 }

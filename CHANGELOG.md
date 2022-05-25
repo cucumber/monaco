@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 ### Changed
-- Use @cucumber/language-service 0.20.4
+- Use @cucumber/language-service 0.25.0
 
 ### Fixed
 - LSP snippets are correctly escaped

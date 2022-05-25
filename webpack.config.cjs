@@ -26,12 +26,18 @@ module.exports = {
       {
         test: /\.ttf$/,
         use: ['file-loader']
-      }
+      },
+      {
+        test: /\.{js,ts}$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
     ]
   },
   plugins: [
     new MonacoWebpackPlugin({
       languages: []
     })
-  ]
+  ],
+  devtool: "source-map"
 }

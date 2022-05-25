@@ -117,13 +117,6 @@ function toIRange(range: Range): IRange {
   }
 }
 
-// function toIPosition(position: Position): IPosition {
-//   return {
-//     lineNumber: position.line + 1,
-//     column: position.character + 1,
-//   }
-// }
-
 function toPosition(position: IPosition): Position {
   return {
     line: position.lineNumber - 1,

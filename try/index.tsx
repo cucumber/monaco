@@ -23,8 +23,8 @@ async function makeConfigureEditor(): Promise<ConfigureEditor> {
 
   const sources: Source<LanguageName>[] = [
     {
-      language: 'java',
-      path: 'StepDefinitions.java',
+      languageName: 'java',
+      uri: 'file:///tmp/StepDefinitions.java',
       content: `class StepDefinitions {
     @Given("I have {int} cukes in my belly"  )
     void method1() {
@@ -42,7 +42,11 @@ async function makeConfigureEditor(): Promise<ConfigureEditor> {
     },
   ]
 
-  const { expressions } = expressionBuilder.build(sources, [])
+  const { expressionLinks, errors } = expressionBuilder.build(sources, [])
+  for (const error of errors) {
+    console.error(error)
+  }
+  const expressions = expressionLinks.map((link) => link.expression)
 
   const registry = new ParameterTypeRegistry()
   const docs = buildSuggestions(

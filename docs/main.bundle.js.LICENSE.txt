@@ -1,4 +1,9 @@
 /*!
+   * mustache.js - Logic-less {{mustache}} templates with JavaScript
+   * http://github.com/janl/mustache.js
+   */
+
+/*!
 Copyright 2019 Ron Buckton
 
 Licensed under the Apache License, Version 2.0 (the "License");

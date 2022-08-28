@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.0] - 2022-08-28
 ### Changed
 - Upgrade all dependencies
 
@@ -87,7 +88,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/monaco/compare/v0.10.0...HEAD
+[Unreleased]: https://github.com/cucumber/monaco/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/cucumber/monaco/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/cucumber/monaco/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/cucumber/monaco/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/cucumber/monaco/compare/v0.7.0...v0.8.0

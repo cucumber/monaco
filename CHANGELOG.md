@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Upgrade all dependencies
+
 ## [0.10.0] - 2022-05-25
 ### Changed
 - Use @cucumber/language-service 0.25.0

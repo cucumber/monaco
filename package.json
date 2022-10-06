@@ -1,6 +1,6 @@
 {
   "name": "@cucumber/monaco",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Cucumber Monaco",
   "type": "module",
   "main": "dist/cjs/src/index.js",

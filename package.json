@@ -63,7 +63,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
     "file-loader": "6.2.0",
-    "html-webpack-plugin": "5.5.0",
+    "html-webpack-plugin": "5.5.1",
     "http-server": "^14.1.1",
     "mocha": "10.2.0",
     "monaco-editor": "0.37.1",

@@ -67,7 +67,7 @@
     "http-server": "^14.1.1",
     "mocha": "10.2.0",
     "monaco-editor": "0.40.0",
-    "monaco-editor-webpack-plugin": "7.0.1",
+    "monaco-editor-webpack-plugin": "7.1.0",
     "npm-check-updates": "16.10.15",
     "prettier": "2.8.8",
     "pretty-quick": "3.1.3",

@@ -66,7 +66,7 @@
     "html-webpack-plugin": "5.5.3",
     "http-server": "^14.1.1",
     "mocha": "10.2.0",
-    "monaco-editor": "0.43.0",
+    "monaco-editor": "0.44.0",
     "monaco-editor-webpack-plugin": "7.1.0",
     "npm-check-updates": "16.14.5",
     "prettier": "3.0.3",
@@ -86,6 +86,6 @@
     "vscode-languageserver-types": "3.17.5"
   },
   "peerDependencies": {
-    "monaco-editor": "^0.43.0"
+    "monaco-editor": "^0.44.0"
   }
 }

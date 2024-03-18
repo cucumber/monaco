@@ -9,7 +9,7 @@ import {
 import { WasmParserAdapter } from '@cucumber/language-service/wasm'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import { ConfigureEditor, configureMonaco } from '../src/index.js'
 import { MonacoEditor } from './MonacoEditor.js'
@@ -75,13 +75,15 @@ const options = {
   'semanticHighlighting.enabled': true,
 }
 
+const javascriptEditor = document.getElementById('editor1')
+const reactEditor = document.getElementById('editor2')
+
 makeConfigureEditor()
   .then((configureEditor) => {
     // @ts-ignore
-    configureEditor(monaco.editor.create(document.getElementById('editor1'), options))
-    render(
-      <MonacoEditor options={options} className="editor" configure={configureEditor} />,
-      document.getElementById('editor2')
-    )
+    configureEditor(monaco.editor.create(javascriptEditor, options))
+    // @ts-ignore
+    const root = createRoot(reactEditor)
+    root.render(<MonacoEditor options={options} className="editor" configure={configureEditor} />)
   })
   .catch((err) => console.error(err.stack))

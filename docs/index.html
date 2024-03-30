@@ -1,33 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>Cucumber Monaco</title>
     <style>
-.editor {
-  width:800px;
-  height:300px;
-  border:1px solid #ccc;
-}
+      .editor {
+        width: 800px;
+        height: 300px;
+        border: 1px solid #ccc;
+      }
     </style>
-</head>
-<body>
-<h1>
-    Monaco Editor with Cucumber Plugin
-</h1>
-<p>
-    Things you can try:
-</p>
-<ul>
-    <li>⇧⌥F - Format Document</li>
-    <li>Modify the first step and see it underlined as undefined</li>
-    <li>Type a new step and see auto-complete suggestions</li>
-</ul>
-<h2>Plain JavaScript editor</h2>
-<div id="editor1" class="editor"></div>
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
+  <body>
+    <h1>Monaco Editor with Cucumber Plugin</h1>
+    <p>Things you can try:</p>
+    <ul>
+      <li>⇧⌥F - Format Document</li>
+      <li>Modify the first step and see it underlined as undefined</li>
+      <li>Type a new step and see auto-complete suggestions</li>
+    </ul>
+    <h2>Plain JavaScript editor</h2>
+    <div id="editor1" class="editor"></div>
 
-<h2>React editor</h2>
-<div id="editor2"></div>
-<script src="./main.bundle.js"></script>
-</body>
+    <h2>React editor</h2>
+    <div id="editor2"></div>
+    <script src="./main.bundle.js"></script>
+  </body>
 </html>

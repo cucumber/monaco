@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Malaysian localisation and translations for "Rule" in Vietnamese, Irish, Danish, Dutch ([#123](https://github.com/cucumber/monaco/pull/123))
+
+### Fixed
+- Prevent formatting introducing trailing whitespace on headings ([#123](https://github.com/cucumber/monaco/pull/123))
+- Prevent formatting removing trailing comments ([#123](https://github.com/cucumber/monaco/pull/123))
+- Format table widths with full-width characters ([#123](https://github.com/cucumber/monaco/pull/123))
 
 ## [0.12.0] - 2022-10-06
 ### Changed

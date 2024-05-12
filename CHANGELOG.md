@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Diagnostics for marking steps as undefined in scenario outlines ([#210](https://github.com/cucumber/language-service/pull/210))
 - Malaysian localisation and translations for "Rule" in Vietnamese, Irish, Danish, Dutch ([#123](https://github.com/cucumber/monaco/pull/123))
 
 ### Fixed

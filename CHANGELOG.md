@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Prevent formatting introducing trailing whitespace on headings ([#123](https://github.com/cucumber/monaco/pull/123))
 - Prevent formatting removing trailing comments ([#123](https://github.com/cucumber/monaco/pull/123))
 - Format table widths with full-width characters ([#123](https://github.com/cucumber/monaco/pull/123))
+- Downgrade diagnostic severity level of undefined steps to warnings ([#127](https://github.com/cucumber/monaco/pull/127))
 
 ## [0.12.0] - 2022-10-06
 ### Changed

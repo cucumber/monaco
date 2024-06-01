@@ -9,7 +9,7 @@ import {
 } from '@cucumber/language-service'
 import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api'
 import { editor, IPosition, IRange } from 'monaco-editor/esm/vs/editor/editor.api'
-import { Position, Range, TextEdit } from 'vscode-languageserver-types'
+import { DiagnosticSeverity, Position, Range, TextEdit } from 'vscode-languageserver-types'
 
 type Monaco = typeof monacoEditor
 
@@ -84,7 +84,7 @@ export function configureMonaco(
         const markers: monacoEditor.editor.IMarkerData[] = diagnostics.map((diagnostic) => {
           return {
             ...toIRange(diagnostic.range),
-            severity: monaco.MarkerSeverity.Error,
+            severity: toSeverity(diagnostic.severity),
             message: diagnostic.message,
           }
         })
@@ -122,4 +122,20 @@ function toPosition(position: IPosition): Position {
     line: position.lineNumber - 1,
     character: position.column - 1,
   }
+}
+
+// https://github.com/microsoft/monaco-editor/blob/c49fdf9f0c131909ca1b661ca3ff4113c42f1c09/src/language/common/lspLanguageFeatures.ts#L121C1-L134C2
+function toSeverity(lsSeverity: number | undefined): monacoEditor.MarkerSeverity {
+	switch (lsSeverity) {
+		case DiagnosticSeverity.Error:
+			return monacoEditor.MarkerSeverity.Error;
+		case DiagnosticSeverity.Warning:
+			return monacoEditor.MarkerSeverity.Warning;
+		case DiagnosticSeverity.Information:
+			return monacoEditor.MarkerSeverity.Info;
+		case DiagnosticSeverity.Hint:
+			return monacoEditor.MarkerSeverity.Hint;
+		default:
+			return monacoEditor.MarkerSeverity.Info;
+	}
 }

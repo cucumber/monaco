@@ -126,16 +126,16 @@ function toPosition(position: IPosition): Position {
 
 // https://github.com/microsoft/monaco-editor/blob/c49fdf9f0c131909ca1b661ca3ff4113c42f1c09/src/language/common/lspLanguageFeatures.ts#L121C1-L134C2
 function toSeverity(lsSeverity: number | undefined): monacoEditor.MarkerSeverity {
-	switch (lsSeverity) {
-		case DiagnosticSeverity.Error:
-			return monacoEditor.MarkerSeverity.Error;
-		case DiagnosticSeverity.Warning:
-			return monacoEditor.MarkerSeverity.Warning;
-		case DiagnosticSeverity.Information:
-			return monacoEditor.MarkerSeverity.Info;
-		case DiagnosticSeverity.Hint:
-			return monacoEditor.MarkerSeverity.Hint;
-		default:
-			return monacoEditor.MarkerSeverity.Info;
-	}
+  switch (lsSeverity) {
+    case DiagnosticSeverity.Error:
+      return monacoEditor.MarkerSeverity.Error
+    case DiagnosticSeverity.Warning:
+      return monacoEditor.MarkerSeverity.Warning
+    case DiagnosticSeverity.Information:
+      return monacoEditor.MarkerSeverity.Info
+    case DiagnosticSeverity.Hint:
+      return monacoEditor.MarkerSeverity.Hint
+    default:
+      return monacoEditor.MarkerSeverity.Info
+  }
 }

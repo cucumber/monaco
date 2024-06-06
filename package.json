@@ -26,7 +26,6 @@
     "prepublishOnly": "npm run build",
     "eslint-fix": "eslint --ext ts,tsx --max-warnings 0 --fix src test try",
     "eslint": "eslint --ext ts,tsx --max-warnings 0 src test try",
-    "upgrade": "npm-check-updates --upgrade",
     "webpack": "npm run build:cjs && rm -f docs/*.js docs/*.ttf docs/*.txt docs/*.wasm && webpack && cp node_modules/@cucumber/language-service/dist/*.wasm docs"
   },
   "repository": {
@@ -68,7 +67,6 @@
     "monaco-editor": "0.49.0",
     "monaco-editor-webpack-plugin": "7.1.0",
     "node-gyp": "^10.0.1",
-    "npm-check-updates": "16.14.20",
     "prettier": "3.3.1",
     "pretty-quick": "^4.0.0",
     "react": "18.3.1",

@@ -80,7 +80,7 @@
     "webpack-cli": "6.0.1"
   },
   "dependencies": {
-    "@cucumber/language-service": "1.6.0",
+    "@cucumber/language-service": "1.7.0",
     "vscode-languageserver-types": "3.17.5"
   },
   "peerDependencies": {
